@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /controlpanel
+
+Allow: /
+Allow: /terms
+Allow: /privacy
+Allow: /cookies
+Allow: /faq
+Allow: /aboutus
+Allow: /contactus
+Allow: /paid
+
+Sitemap: https://linkamon.com/sitemap.xml

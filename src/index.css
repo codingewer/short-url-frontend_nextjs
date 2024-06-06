@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap");
+
+:root {
+  /* fonts */
+  /* font sizes */
+  --font-size-sm: 14px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-1: #7215fc;
+  --color-2:#B888FF;
+  --color-3:#191919;
+  --shadow-color:rgba(184, 136, 255, 0.25);
+  --color-darkslategray: #464a5f;
+
+
+  /* Gaps */
+  --gap-7xs: 6px;
+
+  /* Paddings */
+  --padding-lgi: 19px;
+  --padding-5xl: 24px;
+  --padding-xs: 12px;
+  --padding-5xs: 8px;
+  --padding-10xs: 3px;
+  --padding-2xs: 11px;
+
+  /* Border radiuses */
+  --br-xs: 12px;
+  --br-80xl: 99px;
+  
+    /* font sizes */
+    --font-size-xl: 20px;
+    --font-size-45xl: 64px;
+    --font-size-32xl: 51px;
+    --font-size-19xl: 38px;
+  
+    /* Gaps */
+    --gap-5xl: 24px;
+  
+    /* Border radiuses */
+    --br-xs: 12px;
+    /* Paddings */
+    --padding-7xs: 6px;
+
+  /* fonts */
+
+  /* font sizes */
+  --font-size-13xl: 32px;
+  --font-size-lgi: 19px;
+  --font-size-7xl: 26px;
+  --font-size-17xl: 36px;
+  --font-size-3xl: 22px;
+  --font-size-10xl: 29px;
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-24xl: 43px;
+}
+
+

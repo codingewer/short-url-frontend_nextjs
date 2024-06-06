@@ -1,0 +1,85 @@
+.ads-container{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     min-height: 100vh;
+     width: 100vw;
+}
+
+.ad-content{
+    max-height: 70%;
+    width: calc(100% - 72px);
+    padding: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    border-radius: 24px;
+}
+
+.skip-btn, .intereste-btn{
+    border: none;
+    padding: 12px;
+    min-width: 150px;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+}
+
+.skip-btn{
+    color: white;
+    background-color: var(--color-1);
+}
+
+.intereste-btn{
+    background: none;
+    color: var(--color-1);
+    border: 2px solid var(--color-1);
+}
+
+.ad-content span{
+    font-weight: 600;
+    color: var(--color-darkslategray);
+    font-size: 18px;
+    text-align: center;
+}
+
+.url-info-public{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: calc(100% - 48px ) ;
+    padding: 24px;
+    gap: 12px;
+    border-radius: 12px;
+    flex-wrap: wrap;
+}
+
+.url-info-pub{
+    padding: 12px;
+    width: calc(100% - 24px);
+    border: solid 2px var(--shadow-color);
+    border-radius: 6px;
+    gap: 24px;
+}
+@media screen and (min-width: 1080px) {
+.adsbygoogle{
+    max-width: 50%;
+    background-color: var(--color-darkslategray);
+}
+.url-info-public{
+    max-width: 50%;
+}
+}
+
+.adsbygoogle{
+    background-color: var(--color-darkslategray);
+}
