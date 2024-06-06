@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../Bars/Footer";
 import TopBar from "../Bars/TopBar";
+import DataChart from "./DataChart";
+import UpdateUser from "./UpdateUser";
 
 import { GetUserByIDAsync } from "../Api/User/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { GetSiteDataBySiteName } from "../Api/Settings/SettingsSlice";
 import SideBarDash from "../Bars/SideBarDash";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Profile() {
   var logined;
@@ -30,11 +33,28 @@ function Profile() {
       return () => window.removeEventListener("resize", handleWindowResize);
     }
   }, []);
+  const router = useRouter();
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.scrollTo(0, 0); // Sayfanın en üstüne kaydır
     }
   }, []);
+  const [section, setSection] = useState('statistics');
+
+  useEffect(() => {
+    const currentSection = router.query.section || 'statistics';
+    setSection(currentSection);
+  }, [router.query.section]);
+
+  const renderSection = () => {
+    switch (section) {
+      case 'settings':
+        return <UpdateUser />;
+      case 'statistics':
+      default:
+        return <DataChart />;
+    }
+  };
   return (
     <div>
       {width < 1080 ? (
@@ -86,7 +106,10 @@ function Profile() {
         <div className="profile-nav">
           <SideBarDash />
         </div>
-        <div className="profile-pages"></div>
+        <div className="profile-pages">
+          {renderSection}
+          <DataChart/>
+        </div>
       </div>
       <Footer />
       {

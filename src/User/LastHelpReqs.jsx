@@ -17,7 +17,7 @@ function LastHelpeqs(props) {
   return (
     <div className="balance-requests">
       <h1>Son Destek Talepleri</h1>
-      {data.length > 0 &&
+      {data.length > 0 ? (
         data?.slice(0, 1).map((item, index) => (
           <div key={item.ID} className="balance-request">
             <span style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -32,7 +32,10 @@ function LastHelpeqs(props) {
               <img src={pending} style={{ height: 32 }} />
             )}
           </div>
-        ))}
+        ))
+      ) : (
+        <h1>Son Destek Talepleri Bulunmuyor</h1>
+      )}
     </div>
   );
 }
