@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import userico from "../assets/icons/icons8-login-50 1.svg";
 import signinico from "../assets/icons/icons8-user-48 1.svg";
 
-import logo from "../assets/imgs/logo.jpeg"
+import logo from "../assets/imgs/logo.png"
 import logouticon from "../assets/icons/logout.png";
 import Link from "next/link";
 import chartico from "../assets/icons/chartico.svg";
