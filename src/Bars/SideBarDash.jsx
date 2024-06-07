@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/imgs/logo.jpeg"
 import logouticon from "../assets/icons/logout.png";
 import Link from "next/link";
 import chartico from "../assets/icons/chartico.svg";
