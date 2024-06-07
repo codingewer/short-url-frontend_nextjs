@@ -1,4 +1,5 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Main, NextScript } from "next/document";
+import Head from "next/head";
 
 export default function Document() {
   return (
@@ -21,7 +22,8 @@ export default function Document() {
       <body>
         <noscript>Linkleri kısaltıp para kazanmak çok kolay</noscript>
         <div id="root"></div>
-        <NextScript />
+        <NextScript/>
+        <Main/>
       </body>
     </Html>
   );
