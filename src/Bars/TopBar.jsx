@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/logo.jpeg";
+import logo from "../../public/logo.lpeg";
 import userico from "../assets/icons/icons8-login-50 1.svg";
 import signinico from "../assets/icons/icons8-user-48 1.svg";
 import menuico from "../assets/icons/menu-ico.svg";
