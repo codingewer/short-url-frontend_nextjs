@@ -153,7 +153,7 @@ function SideBar() {
           </Link>
 
           <Link
-            href="/dashboard/shorturl"
+            href="/dashboard/?section=shorturl"
             onClick={() => handleActiveLink("shorturl")}
             className={
               selected === "shorturl"
@@ -173,7 +173,7 @@ function SideBar() {
           </Link>
 
           <Link
-            href="/dashboard/balance"
+            href="/dashboard/?section=balance"
             onClick={() => handleActiveLink("balance")}
             className={
               selected === "balance"
@@ -193,7 +193,7 @@ function SideBar() {
           </Link>
 
           <Link
-            href="/dashboard/help"
+            href="/dashboard/?section=help"
             onClick={() => handleActiveLink("help")}
             className={
               selected === "help"
@@ -213,7 +213,7 @@ function SideBar() {
           </Link>
 
           <Link
-            href="/dashboard/settings"
+            href="/dashboard/?section=settings"
             onClick={() => handleActiveLink("settings")}
             className={
               selected === "settings"

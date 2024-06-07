@@ -4,6 +4,7 @@ import pending from "../assets/icons/Hourglass.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { formatDate } from "./Profile";
 import { GetHelpRequestsByUserAsync } from "../Api/Help/HelpSlice";
+import Image from "next/image";
 
 function LastHelpeqs(props) {
   const user0 = useSelector((state) => state.users.userrealtime);
@@ -27,14 +28,14 @@ function LastHelpeqs(props) {
               {formatDate(item.createdAt)}
             </span>
             {item.status ? (
-              <img src={doneicon} style={{ height: 32 }} />
+              <Image src={doneicon} style={{ height: 32 }} />
             ) : (
-              <img src={pending} style={{ height: 32 }} />
+              <Image src={pending} style={{ height: 32 }} />
             )}
           </div>
         ))
       ) : (
-        <h1>Son Destek Talepleri Bulunmuyor</h1>
+        <h1></h1>
       )}
     </div>
   );

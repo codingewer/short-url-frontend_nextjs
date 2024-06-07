@@ -4,6 +4,7 @@ import pending from "../assets/icons/Hourglass.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { GetBalanceByUserIDAsync } from "../Api/Balance/BalanceSlice";
 import { formatDate } from "./Profile";
+import Image from "next/image";
 
 function LastBalanceRequests(props) {
   const user0 = useSelector((state) => state.users.userrealtime);
@@ -32,9 +33,9 @@ function LastBalanceRequests(props) {
               {formatDate(item.createdAt)}
             </span>
             {item.status ? (
-              <img src={doneicon} style={{ height: 32 }} />
+              <Image src={doneicon} style={{ height: 32 }} />
             ) : (
-              <img src={pending} style={{ height: 32 }} />
+              <Image src={pending} style={{ height: 32 }} />
             )}
           </div>
         ))

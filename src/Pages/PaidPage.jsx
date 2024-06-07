@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import TopBar from "../Bars/TopBar";
 import Footer from "../Bars/Footer";
-import "./PaidPage.css";
 import loadingicon from "../assets/icons/loading.gif";
 import { GetPaidBalanceRequestsAsync } from "../Api/Balance/BalanceSlice";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { Helmet } from "react-helmet";
+import Image from "next/image";
 
 function PaidPage() {
   const paidlist = useSelector((state) => state.balance.paidlist);
@@ -47,7 +47,7 @@ function PaidPage() {
       >
         <div data-aos="fade-up" className="paid-list">
           <h1>Ödeme Kanıtları</h1>
-          {loading && <img src={loadingicon} className="loading-icon" />}
+          {loading && <Image src={loadingicon} className="loading-icon" />}
           {paidlist?.slice(0, showLimit).map((paid, index) => (
             <div key={index} className="paid-card">
               <span

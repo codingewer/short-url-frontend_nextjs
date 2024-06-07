@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./UserForm.css";
 import * as Yup from "yup";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import TopBar from "../Bars/TopBar";
 import loadingico from "../assets/icons/loading.gif";
 import React from "react";
-
+import Image from "next/image";
 
 const validationSchema = Yup.object({
   mail: Yup.string().required("Mail adı gerekli"),
@@ -30,11 +30,14 @@ function ForgotPassword() {
     },
   });
   useEffect(() => {
-    formik.setFieldValue("domain",  url.split("/forgotpassword")[0] + "/resetpassword/" );
+    formik.setFieldValue(
+      "domain",
+      url.split("/forgotpassword")[0] + "/resetpassword/"
+    );
   }, [formik.values.mail]);
-  useEffect(()=>{
+  useEffect(() => {
     formik.resetForm();
-  },[success])
+  }, [success]);
   return (
     //SAyfa tasarımı
     <>
@@ -43,8 +46,14 @@ function ForgotPassword() {
         <div className="user-form-div">
           <div className="register-form-div">
             <form className="register-form" onSubmit={formik.handleSubmit}>
-              {success ?<p style={{ color: "green" }} >Mail Başarıyla gönderildi</p> : <p style={{ color: "red" }}>{error}</p>}
-              {loading && <img className="loading-icon" src={loadingico} alt="" />}
+              {success ? (
+                <p style={{ color: "green" }}>Mail Başarıyla gönderildi</p>
+              ) : (
+                <p style={{ color: "red" }}>{error}</p>
+              )}
+              {loading && (
+                <Image className="loading-icon" src={loadingico} alt="" />
+              )}
               <h3>Şifremi unuttum</h3>
               <input
                 type="mail"

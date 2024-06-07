@@ -15,6 +15,7 @@ import {
 } from "../Api/Help/HelpSlice";
 import { formatDate } from "./Profile";
 import { UploadImage, UploadVideo } from "../Api/File/FileSlice";
+import Image from "next/image";
 
 const validationSchema = yup.object({
   Content: yup.string().required("Mesaj boş olamaz"),
@@ -132,7 +133,7 @@ function HelpReq() {
                     href={formik.values.ImageUrl}
                     rel="noreferrer"
                   >
-                    <img
+                    <Image
                       className="uploaded-content"
                       src={formik.values.ImageUrl}
                       alt="fotoğraf"
@@ -143,7 +144,7 @@ function HelpReq() {
                     type="button"
                     onClick={() => setFormikValue("ImageUrl", "")}
                   >
-                    <img src={trashicon} alt="sil" />
+                    <Image src={trashicon} alt="sil" />
                   </button>
                 </div>
               )}
@@ -169,7 +170,7 @@ function HelpReq() {
                     type="button"
                     onClick={() => setFormikValue("VideoUrl", "")}
                   >
-                    <img src={trashicon} alt="sil" />
+                    <Image src={trashicon} alt="sil" />
                   </button>
                 </div>
               )}
@@ -191,7 +192,7 @@ function HelpReq() {
                 type="button"
                 onClick={handleUploadFile}
               >
-                <img
+                <Image
                   style={{
                     height: 32,
                   }}
@@ -224,7 +225,7 @@ function HelpReq() {
                   </span>
 
                   <div className="supports-url">
-                    <img
+                    <Image
                       style={{
                         height: 24,
                       }}
@@ -248,7 +249,7 @@ function HelpReq() {
                     rel="noreferrer"
                     className="supports-url"
                   >
-                    <img
+                    <Image
                       style={{
                         height: 24,
                       }}
@@ -263,7 +264,7 @@ function HelpReq() {
               {req.status ? (
                 <>
                   {" "}
-                  <img  className="helpreq-status-ico" src={doneicon} style={{ height: 32 }} />
+                  <Image  className="helpreq-status-ico" src={doneicon} style={{ height: 32 }} />
                   <span 
                   
                   style={{
@@ -277,7 +278,7 @@ function HelpReq() {
                   <p>{req.Answer}</p>
                 </>
               ) : (
-                <img className="helpreq-status-ico" src={pendingico} style={{ height: 32 }} />
+                <Image className="helpreq-status-ico" src={pendingico} style={{ height: 32 }} />
               )}
             </div>
           ))}

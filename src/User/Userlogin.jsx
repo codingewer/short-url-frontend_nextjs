@@ -3,6 +3,7 @@ import Login from "./Login";
 import loadingico from "../assets/icons/loading.gif";
 import TopBar from "../Bars/TopBar";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 function Userlogin() {
   const OpenForm = (id, id2) => {
     document.getElementById(id).style.display = "block";
@@ -15,7 +16,7 @@ function Userlogin() {
       <TopBar />
       <div className="login-register">
         <div className="user-form-div">
-              {loading && <img className="loading-icon" src={loadingico} alt="" />}
+              {loading && <Image className="loading-icon" src={loadingico} alt="" />}
             <Login />
         </div>
       </div>

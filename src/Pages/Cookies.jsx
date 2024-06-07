@@ -5,6 +5,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import bgbanner from "../assets/imgs/undraw_personal_information_re_vw8a.svg";
 import { Helmet } from "react-helmet";
+import Image from "next/image";
 
 function Cookies() {
   useEffect(() => {
@@ -32,7 +33,7 @@ function Cookies() {
                 </div>
               </div>
             </div>
-            <img
+            <Image
               className="undraw-link-shortener-mvf6-1-icon"
               loading="lazy"
               alt=""

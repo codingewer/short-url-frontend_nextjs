@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { UpdatePasswordAsync, UpdateUserAsync } from "../Api/User/UserSlice";
 import loadingico from "../assets/icons/loading.gif";
 import { UpdateUserBalanceInfoAsync } from "../Api/Balance/BalanceSlice";
+import Image from "next/image";
 const validationSchema = Yup.object().shape({
   UserName: Yup.string().required("Kullanıcı adı gerekli"),
   Mail: Yup.string()
@@ -95,7 +96,7 @@ function UpdateUser() {
           Güncelle
         </button>
       </form>
-      {loading && <img className="loading-icon" src={loadingico} alt="" />}
+      {loading && <Image className="loading-icon" src={loadingico} alt="" />}
       <form className="register-form" onSubmit={PasswordForm.handleSubmit}>
         <label htmlFor="password">Eski Şifre</label>
         <input

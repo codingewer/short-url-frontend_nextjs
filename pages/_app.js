@@ -26,7 +26,7 @@ const SideBar = dynamic(() => import("../src/Bars/SideBar"), { ssr: false })
 export default function MyApp({ Component, pageProps }) {
   
   return (
-    <div>
+    <div className="App">
       <Head>
         <meta name="google-adsense-account" content="ca-pub-5425176553873988" />
         <meta charset="utf-8" />

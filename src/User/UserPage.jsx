@@ -17,6 +17,7 @@ import {
   GetUserByIDAsync,
   UpdateUserBlockedAsync,
 } from "../Api/User/UserSlice";
+import Image from "next/image";
 
 function UserPage() {
   const dispatch = useDispatch();
@@ -78,7 +79,7 @@ function UserPage() {
     <div className="user-page">
       <div className="user-manage-btns">
         <button type="button" className="card-btns" onClick={()=>DeleteUserAsync(user?.ID)}>
-          <img src={trashicon} alt="kullanıcıyı sil" />
+          <Image src={trashicon} alt="kullanıcıyı sil" />
         </button>{" "}
         <button className="card-btns" onClick={ChangeUserBlocked}>
           {" "}

@@ -8,6 +8,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import bgbanner from "../assets/imgs/undraw_portfolio_website_re_jsdd.svg";
 import { Helmet } from "react-helmet";
+import Image from "next/image";
 
 function AboutUs() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function AboutUs() {
                 </div>
               </div>
             </div>
-            <img
+            <Image
               className="undraw-link-shortener-mvf6-1-icon"
               loading="lazy"
               alt=""

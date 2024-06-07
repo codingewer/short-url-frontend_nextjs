@@ -2,13 +2,13 @@ import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import TopBar from "../Bars/TopBar";
 import Footer from "../Bars/Footer";
-import "./Faq.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useSelector } from "react-redux";
 import { GetAllFaqsAsync } from "../Api/Faq/FaqSlice";
 import bgbanner from "../assets/imgs/undraw_questions_re_1fy7.svg";
 import { Helmet } from "react-helmet";
+import Image from "next/image";
 
 function Faq() {
   const faqs = useSelector((state) => state.faqs.items);
@@ -50,7 +50,7 @@ function Faq() {
                 </div>
               </div>
             </div>
-            <img
+            <Image
               className="undraw-link-shortener-mvf6-1-icon"
               loading="lazy"
               alt=""

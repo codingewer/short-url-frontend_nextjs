@@ -7,6 +7,7 @@ import TopBar from "../Bars/TopBar";
 import loadingico from "../assets/icons/loading.gif";
 import { useEffect } from 'react';
 import React from "react";
+import Image from 'next/image';
 
 const passwordValidationSchema = Yup.object().shape({
   password: Yup.string().required("Yeni Şifre gerekli"),
@@ -55,7 +56,7 @@ function ResetPassword() {
               onSubmit={PasswordForm.handleSubmit}
             >
               {loading && (
-                <img className="loading-icon" src={loadingico} alt="" />
+                <Image className="loading-icon" src={loadingico} alt="" />
               )}
               {success ? (
                 <span style={{ color: "green" }}>

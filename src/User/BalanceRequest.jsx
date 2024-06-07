@@ -18,6 +18,7 @@ import {
   UpdatePaparaInfoAsync,
 } from "../Api/Balance/PaparaSlice";
 import LastBalanceRequests from "./LastBalanceReqs";
+import Image from "next/image";
 
 function BalanceRequest(props) {
   const sitedata = useSelector((state) => state.settings.data);
@@ -169,7 +170,7 @@ function BalanceRequest(props) {
             fontWeight:600
           }}
           >Para Çek</span>
-          {loading && <img src={loadingicon} className="loading-icon" />}
+          {loading && <Image src={loadingicon} className="loading-icon" />}
           {formik.values.amount > balanceW && (
             <span style={{ color: "red", fontSize: 16 }}>
               bakiye yetersiz! En fazla {balanceW} &#8378; çekebilirisiniz.
@@ -235,7 +236,7 @@ function BalanceRequest(props) {
                 </button>
               </div>
             </div>
-            {bankloading && <img src={loadingicon} className="loading-icon" />}
+            {bankloading && <Image src={loadingicon} className="loading-icon" />}
             {banksuccess ? (
               <span style={{ color: "green" }}>{bankmessage}</span>
             ) : (
@@ -277,7 +278,7 @@ function BalanceRequest(props) {
               </button>
               {usersuccess && user.BalanceInfo.userId === user.ID ? (
                 <button onClick={handleDeleteIBAN} type="button">
-                  <img className="btn-icon" src={trashico} alt="Sil" />
+                  <Image className="btn-icon" src={trashico} alt="Sil" />
                 </button>
               ) : null}
             </form>
@@ -293,7 +294,7 @@ function BalanceRequest(props) {
             </div>
 
             {paparaloading && (
-              <img src={loadingicon} className="loading-icon" />
+              <Image src={loadingicon} className="loading-icon" />
             )}
             {paparsuccess ? (
               <span style={{ color: "green" }}>{paparamessage}</span>
@@ -321,7 +322,7 @@ function BalanceRequest(props) {
               </button>
               {usersuccess && user.PaparaNo.UserId === user.ID ? (
                 <button onClick={handleDeletePaparaNo} type="button">
-                  <img className="btn-icon" src={trashico} alt="Sil" />
+                  <Image className="btn-icon" src={trashico} alt="Sil" />
                 </button>
               ) : null}
             </form>

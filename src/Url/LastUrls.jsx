@@ -11,6 +11,7 @@ import {
   GetUrlByCreatedByAsync,
 } from "../Api/Url/UrlSlice";
 import  Link  from "next/link";
+import Image from "next/image";
 
 
 function LastUrls() {
@@ -66,9 +67,9 @@ function LastUrls() {
 console.log(items)
   return (
       <div className="last-shortened-urls">
-      {urlgetloading && <img src={loadingicon} className="loading-icon" />}
+      {urlgetloading && <Image src={loadingicon} className="loading-icon" />}
 
-      {items?.length !== 0 && (
+      {items?.length > 0 && (
         <>
           <input
             placeholder="Ara(orneksite.com)"
@@ -130,20 +131,23 @@ console.log(items)
                         type="button"
                         onClick={() => CopyContent(item?.ShortenedUrl)}
                         >
-                        <img src={copyicon} alt="Kopyala" />
+                        
+                        <Image src={copyicon} alt="Kopyala" />
                       </button>
                       <button
                         type="button"
                         className="card-btns"
                         onClick={() => DeleteContent(item?.ID)}
                         >
-                        <img src={trashicon} alt="Sil" />
+                        
+                        <Image src={trashicon} alt="Sil" />
                       </button>
                       <Link
                         className="card-btns"
                         href={"/dashboard/updateurl/" + item.ID}
                         >
-                        <img src={editicon} alt="Kopyala" />
+                        
+                        <Image src={editicon} alt="Kopyala" />
                       </Link>
                     </div>
                   </td>

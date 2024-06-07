@@ -1,15 +1,14 @@
 import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
-import "./AboutUs.css";
 import TopBar from "../Bars/TopBar";
 import Footer from "../Bars/Footer";
-import "./Faq.css";
 import { useSelector } from "react-redux";
 import { GetSiteDataBySiteName } from "../Api/Settings/SettingsSlice";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import bgbanner from "../assets/imgs/undraw_personal_information_re_vw8a.svg";
 import { Helmet } from "react-helmet";
+import Image from "next/image";
 
 function Privacy() {
   const dispatch = useDispatch();
@@ -51,7 +50,7 @@ function Privacy() {
                 </div>
               </div>
             </div>
-            <img
+            <Image
               className="undraw-link-shortener-mvf6-1-icon"
               loading="lazy"
               alt=""

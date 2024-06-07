@@ -3,6 +3,9 @@ import Footer from "../Bars/Footer";
 import TopBar from "../Bars/TopBar";
 import DataChart from "./DataChart";
 import UpdateUser from "./UpdateUser";
+import HelpReq from "./HelpReq";
+import BalanceRequest from "./BalanceRequest";
+import ShortUrl from "../Url/ShortUrl";
 
 import { GetUserByIDAsync } from "../Api/User/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,28 +36,37 @@ function Profile() {
       return () => window.removeEventListener("resize", handleWindowResize);
     }
   }, []);
-  const router = useRouter();
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.scrollTo(0, 0); // Sayfanın en üstüne kaydır
     }
   }, []);
-  const [section, setSection] = useState('statistics');
+
+  const router = useRouter();
+  const [section, setSection] = useState("statistics");
 
   useEffect(() => {
-    const currentSection = router.query.section || 'statistics';
+    const currentSection = router.query.section || "statistics";
     setSection(currentSection);
   }, [router.query.section]);
 
   const renderSection = () => {
     switch (section) {
-      case 'settings':
+      case "settings":
         return <UpdateUser />;
-      case 'statistics':
+      case "help":
+        return <HelpReq />;
+      case "balance":
+        return <BalanceRequest />;
+      case "shorturl":
+        return <ShortUrl />;
+      case "statistics":
       default:
         return <DataChart />;
     }
   };
+
   return (
     <div>
       {width < 1080 ? (
@@ -106,10 +118,7 @@ function Profile() {
         <div className="profile-nav">
           <SideBarDash />
         </div>
-        <div className="profile-pages">
-          {renderSection}
-          <DataChart/>
-        </div>
+        <div className="profile-pages">{renderSection()}</div>
       </div>
       <Footer />
       {

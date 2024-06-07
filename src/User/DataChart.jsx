@@ -20,6 +20,7 @@ import Link from "next/link";
 import LastUrls from "../Url/LastUrls";
 import LastBalanceRequests from "./LastBalanceReqs";
 import LastHelpeqs from "./LastHelpReqs";
+import Image from "next/image";
 
 ChartJS.register(
   LineElement,
@@ -159,8 +160,8 @@ function DataChart() {
         <div className="user-details">
           <div className="user-profile">
             <span>@{user?.UserName}</span>
-            <Link href={"/dashboard/settings"}>
-              <img src={settingsico} alt="" />
+            <Link href={"/dashboard/?section=settings"}>
+              <Image src={settingsico} alt="" />
             </Link>
           </div>
           <div className="urls-details">
@@ -212,13 +213,13 @@ function DataChart() {
           display: "flex",
           flexDirection: "column",
           gap: 24,
-          width: "100vw",
+          width: "100%",
         }}
       >
         <LastUrls />
         <div
           style={{
-            width: "100vw",
+            width: "100%",
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",

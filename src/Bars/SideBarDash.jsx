@@ -7,6 +7,7 @@ import shorturlico from "../assets/icons/shorturlico.svg";
 import walletico from "../assets/icons/walletico.svg";
 import supportico from "../assets/icons/supportico.svg";
 import settingsico from "../assets/icons/settings.svg";
+import Image from "next/image";
 
 function SideBarDash() {
   var logined;
@@ -46,7 +47,7 @@ function SideBarDash() {
             onClick={() => handleActiveLink("/")}
             relative="path"
           >
-            <img
+            <Image
               style={{
                 borderRadius: 16,
                 width: "72px",
@@ -70,7 +71,7 @@ function SideBarDash() {
                 : "side-bar-item"
             }
           >
-            <img
+            <Image
               style={{
                 height: 32,
                 width: 32,
@@ -82,7 +83,7 @@ function SideBarDash() {
           </Link>
 
           <Link
-            href="/dashboard/shorturl"
+            href="/dashboard/?section=shorturl"
             onClick={() => handleActiveLink("shorturl")}
             className={
               selected === "shorturl"
@@ -90,7 +91,7 @@ function SideBarDash() {
                 : "side-bar-item"
             }
           >
-            <img
+            <Image
               style={{
                 height: 32,
                 width: 32,
@@ -102,7 +103,7 @@ function SideBarDash() {
           </Link>
 
           <Link
-            href="/dashboard/balance"
+            href="/dashboard/?section=balance"
             onClick={() => handleActiveLink("balance")}
             className={
               selected === "balance"
@@ -110,7 +111,7 @@ function SideBarDash() {
                 : "side-bar-item"
             }
           >
-            <img
+            <Image
               style={{
                 height: 32,
                 width: 32,
@@ -122,7 +123,7 @@ function SideBarDash() {
           </Link>
 
           <Link
-            href="/dashboard/help"
+            href="/dashboard/?section=help"
             onClick={() => handleActiveLink("help")}
             className={
               selected === "help"
@@ -130,7 +131,7 @@ function SideBarDash() {
                 : "side-bar-item"
             }
           >
-            <img
+            <Image
               style={{
                 height: 24,
                 width: 32,
@@ -142,7 +143,7 @@ function SideBarDash() {
           </Link>
 
           <Link
-            href="/dashboard/settings"
+            href="/dashboard/?section=settings"
             onClick={() => handleActiveLink("settings")}
             className={
               selected === "settings"
@@ -150,7 +151,7 @@ function SideBarDash() {
                 : "side-bar-item"
             }
           >
-            <img
+            <Image
               style={{
                 height: 24,
                 width: 32,
@@ -190,7 +191,7 @@ function SideBarDash() {
             onClick={handlelogout}
           >
             Çıkış Yap
-            <img src={logouticon} alt="Güncelle" />
+            <Image src={logouticon} alt="Çıkış" />
           </button>
         )}
       </div>
