@@ -21,6 +21,7 @@ export default function Document() {
       <body>
         <noscript>Linkleri kısaltıp para kazanmak çok kolay</noscript>
         <div id="root"></div>
+        <NextScript />
       </body>
     </Html>
   );
