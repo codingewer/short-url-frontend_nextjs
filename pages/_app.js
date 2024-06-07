@@ -20,15 +20,12 @@ import { Provider } from "react-redux";
 import store from "../src/Api/Store";
 import dynamic from "next/dynamic";
 
-const CookiesBar = dynamic(() => import("../src/Bars/CookiesBar"), { ssr: false })
-const SideBar = dynamic(() => import("../src/Bars/SideBar"), { ssr: false })
+const CookiesBar = dynamic(() => import("../src/Bars/CookiesBar"), {ssr: false});
+const SideBar = dynamic(() => import("../src/Bars/SideBar"), { ssr: false });
 
 export default function MyApp({ Component, pageProps }) {
-  
   return (
     <div className="App">
-      <Head>
-      </Head>
       <Provider store={store}>
         <SideBar />
         <CookiesBar />

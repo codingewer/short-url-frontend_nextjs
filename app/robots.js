@@ -2,14 +2,16 @@ export default function robots() {
   return {
     rules: {
       userAgent: "*",
-      allow: "/terms",
-      allow: "/privacy",
-      allow: "/cookies",
-      allow: "/faq",
-      allow: "/aboutus",
-      allow: "/contactus",
-      allow: "/paid",
-      Disallow: "/controlpanel",
+      allow: [
+        "/terms",
+        "/privacy",
+        "/cookies",
+        "/faq",
+        "/aboutus",
+        "/contactus",
+        "/paid",
+      ],
+      disallow: ["/controlpanel"],
     },
     sitemap: "https://linkamon.com/sitemap.xml",
   };
