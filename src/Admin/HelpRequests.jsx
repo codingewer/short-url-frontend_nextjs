@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import rejecticon from "../assets/icons/close-icon.png";
 import loadingico from "../assets/icons/loading.gif";
-import "./ControlPanelGlobalStyle.css";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";

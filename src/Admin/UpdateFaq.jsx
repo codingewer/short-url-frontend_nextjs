@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
-import "./ControlPanelGlobalStyle.css";
 import { useDispatch, useSelector } from "react-redux";
 import { GetFaqByIdAsync, UpdateFaqByIdAsync } from "../Api/Faq/FaqSlice";
 import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import loadingico from "../assets/icons/loading.gif";
+import { useRouter } from "next/router";
 
 function UpdateFaq() {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const router = useRouter();
+
 
   const faq = useSelector((state) => state.faqs.data);
   const success = useSelector((state) => state.faqs.success);
@@ -23,7 +24,7 @@ function UpdateFaq() {
       await dispatch(UpdateFaqByIdAsync(values));
     },
   });
-
+console.log(router)
   useEffect(() => {
     if (success && faq !== null) {
       FaqFrom.setValues({
@@ -32,7 +33,7 @@ function UpdateFaq() {
         Answer: faq.Answer,
       });
     } else {
-      dispatch(GetFaqByIdAsync(id));
+      dispatch(GetFaqByIdAsync(router.query.id));
     }
   }, [dispatch, faq]);
   return (

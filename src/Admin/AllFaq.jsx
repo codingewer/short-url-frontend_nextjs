@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./ControlPanelGlobalStyle.css";
 import trashicon from "../assets/icons/trash-icon.png";
 import editicon from "../assets/icons/edit-icon.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +8,8 @@ import {
   GetAllFaqsAsync,
 } from "../Api/Faq/FaqSlice";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import  Link from "next/link";
+import Image from "next/image";
 
 function AllFaq() {
   const dispatch = useDispatch();
@@ -66,10 +66,10 @@ function AllFaq() {
             <p>{faq.Answer}</p>
             <div className="cp-card-btns">
               <button type="button" onClick={() => DeleteFaq(faq.ID)}>
-                <img src={trashicon} alt="sil" />
+                <Image src={trashicon} alt="sil" />
               </button>
-              <Link to={"/controlpanel/faqs/update/" + faq.ID}>
-                <img src={editicon} alt="guncelle" />
+              <Link href={"controlpanel?section=updatefaq&id=" + faq.ID}>
+                <Image src={editicon} alt="guncelle" />
               </Link>
             </div>
           </div>

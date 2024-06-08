@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
-import "./ControlPanelGlobalStyle.css";
 import { useSelector } from "react-redux";
 import { GetAllUserAsync } from "../Api/User/UserSlice";
 import { Link } from "react-router-dom";

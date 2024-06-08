@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./ControlPanelGlobalStyle.css";
 import { useDispatch, useSelector } from "react-redux";
 import { GetFaqByIdAsync, UpdateFaqByIdAsync } from "../Api/Faq/FaqSlice";
 import { useFormik } from "formik";

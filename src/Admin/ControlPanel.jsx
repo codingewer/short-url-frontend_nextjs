@@ -1,6 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import "./ControlPanel.css";
 import AllUsers from "./AllUsers";
 import AllFaq from "./AllFaq";
 import BalanceRequests from "./BalanceRequests";
@@ -13,29 +11,68 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetAllSeenLengthAsync } from "../Api/ChartData/ChartSlice";
 import UpdateUrlFaq from "./UpdateUrlFaq";
 import UrlFaqs from "./UrlFaqs";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 function ControlPanel() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const allseen = useSelector((state) => state.chardata.seenlenght)
-  const dispatch = useDispatch()
+  const allseen = useSelector((state) => state.chardata.seenlenght);
+  const dispatch = useDispatch();
   const [selected, setSelect] = useState("/");
   const handleActiveLink = (select) => {
     setSelect(select);
   };
-  const domain = window.location.href;
-  const dom2 = domain.split("/controlpanel/");
+  var domain;
+  if (typeof window !== "undefined") {
+    domain = window.location.href;
+  }
+  const dom2 = domain?.split("/controlpanel/");
   useEffect(() => {
-    dispatch(GetAllSeenLengthAsync())
+    dispatch(GetAllSeenLengthAsync());
     setSelect(dom2[1]);
-  },[dispatch])
+  }, [dispatch]);
+
+  const router = useRouter();
+  const [section, setSection] = useState("/");
+
+  useEffect(() => {
+    const currentSection = router.query.section || "statistics";
+    setSection(currentSection);
+  }, [router.query.section]);
+
+  const renderSection = () => {
+    switch (section) {
+      case "/":
+        return <BalanceRequests paid={true} />;
+      case "balance-requests-notpaid":
+        return <BalanceRequests paid={false} />;
+      case "help-requests-answered":
+        return <HelpRequests answered={true} />;
+      case "help-requests-notanswered":
+        return <HelpRequests answered={false} />;
+      case "allfaq":
+        return <AllFaq />;
+      case "updatefaq":
+        return <UpdateFaq />;
+      case "allurlsfaqs":
+        return <UrlFaqs />;
+      case "users":
+        return <AllUsers />;
+      case "updatesitesettings":
+        return <UpdateSiteSettings />;
+      case "/":
+      default:
+        return <BalanceRequests paid={true} />;
+    }
+  };
+  console.log(section);
   return (
     <>
       <TopBar />
       <div className="control-panel">
         <div className="site-details-faq">
           <div className="allseens-length">
-          <span>{allseen}</span>
-          <h4>Toplam Görüntülenme</h4>
+            <span>{allseen}</span>
+            <h4>Toplam Görüntülenme</h4>
           </div>
           <div className="request-navbar">
             <Link
@@ -43,7 +80,7 @@ function ControlPanel() {
                 selected === "/" ? "cp-navbar-item-selected" : "cp-navbar-item"
               }
               onClick={() => handleActiveLink("/")}
-              to="/controlpanel/"
+              href="/controlpanel/"
             >
               Ödendi
             </Link>
@@ -54,7 +91,7 @@ function ControlPanel() {
                   : "cp-navbar-item"
               }
               onClick={() => handleActiveLink("balance-requests-notpaid")}
-              to="/controlpanel/balance-requests-notpaid"
+              href="/controlpanel/?section=balance-requests-notpaid"
             >
               Ödenmedi
             </Link>
@@ -65,7 +102,7 @@ function ControlPanel() {
                   : "cp-navbar-item"
               }
               onClick={() => handleActiveLink("help-requests-answered")}
-              to="/controlpanel/help-requests-answered"
+              href="/controlpanel/?section=help-requests-answered"
             >
               Cevaplanmış Destekler
             </Link>
@@ -76,7 +113,7 @@ function ControlPanel() {
                   : "cp-navbar-item"
               }
               onClick={() => handleActiveLink("help-requests-notanswered")}
-              to="/controlpanel/help-requests-notanswered"
+              href="/controlpanel/?section=help-requests-notanswered"
             >
               Cevaplanmamış Destekler
             </Link>
@@ -87,18 +124,18 @@ function ControlPanel() {
                   : "cp-navbar-item"
               }
               onClick={() => handleActiveLink("allfaq")}
-              to="/controlpanel/allfaq"
+              href="/controlpanel/?section=allfaq"
             >
               S.S.S
             </Link>
             <Link
               className={
-                selected === "allursfaqs"
+                selected === "allurlsfaqs"
                   ? "cp-navbar-item-selected"
                   : "cp-navbar-item"
               }
-              onClick={() => handleActiveLink("allursfaqs")}
-              to="/controlpanel/allursfaqs"
+              onClick={() => handleActiveLink("allurlsfaqs")}
+              href="/controlpanel/?section=allurlsfaqs"
             >
               Link Sayafası S.S.S
             </Link>
@@ -109,7 +146,7 @@ function ControlPanel() {
                   : "cp-navbar-item"
               }
               onClick={() => handleActiveLink("users")}
-              to="/controlpanel/users"
+              href="/controlpanel/?section=users"
             >
               Tüm Kullanıcılar
             </Link>
@@ -120,39 +157,17 @@ function ControlPanel() {
                   : "cp-navbar-item"
               }
               onClick={() => handleActiveLink("settings")}
-              to="/controlpanel/settings"
+              href="/controlpanel/settings"
             >
               Ayarlar
             </Link>
           </div>
         </div>
-        <div className="requests">
-          <Routes>
-            <Route path="/" element={<BalanceRequests paid={true} />} />
-            <Route
-              path="/balance-requests-notpaid"
-              element={<BalanceRequests paid={false} />}
-            />
-            <Route
-              path="/help-requests-answered"
-              element={<HelpRequests answered={true} />}
-            />
-            <Route
-              path="/help-requests-notanswered"
-              element={<HelpRequests answered={false} />}
-            />
-            <Route path="/AllUsers" element={<AllUsers />} />
-            <Route path="/allfaq" element={<AllFaq />} />
-            <Route path="/allursfaqs" element={<UrlFaqs/>} />
-            <Route path="/faqs/update/:id" element={<UpdateFaq />} />
-            <Route path="/urlfaqs/update/:id" element={<UpdateUrlFaq/>} />
-            <Route path="/settings" element={<UpdateSiteSettings />} />
-            <Route path="/users" element={<AllUsers/>}  />
-            <Route path="/user/:id" element={<UserPage/>}  />
-          </Routes>
-        </div>
+        <div className="requests">{renderSection()}</div>
       </div>
-      {!user.Admin && (window.location.href= "/dashboard") }
+      {
+        //!user.Admin && (window.location.href= "/dashboard")
+      }
     </>
   );
 }

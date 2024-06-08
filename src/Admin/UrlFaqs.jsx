@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./ControlPanelGlobalStyle.css";
 import trashicon from "../assets/icons/trash-icon.png";
 import editicon from "../assets/icons/edit-icon.png";
 import { useDispatch, useSelector } from "react-redux";

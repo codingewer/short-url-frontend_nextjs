@@ -1,20 +1,26 @@
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
+import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
-import "./ControlPanelGlobalStyle.css";
+import loadingico from "../assets/icons/loading.gif";
 import { useSelector } from "react-redux";
 import {
   GetSiteDataBySiteName,
   UpdateSiteDataBySiteName,
 } from "../Api/Settings/SettingsSlice";
+
 import { EditorState, convertToRaw, ContentState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
-import htmlToDraft from "html-to-draftjs";
+const Editor = dynamic(
+  () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
+  { ssr: false }
+);
 
-import loadingico from "../assets/icons/loading.gif";
+
+const htmlToDraft = typeof window !== 'undefined' && require('html-to-draftjs').default;
+
+import  draftToHtml from 'draftjs-to-html'
 
 const validationSchema = yup.object({
   AboutUs: yup.string().required("Hakkımızda boş olamaz!"),
@@ -159,8 +165,8 @@ function UpdateSiteSettingsForm() {
           name="ContactNumber"
           onChange={UpdateSiteSettingsForm.handleChange}
           value={UpdateSiteSettingsForm.values.ContactNumber}
-
-        /><label htmlFor="AdSlot">Adres</label>
+        />
+        <label htmlFor="AdSlot">Adres</label>
         <input
           className="cpupdate-inputs"
           type="text"

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./ControlPanelGlobalStyle.css";
 import copyicon from "../assets/icons/copy-icon.png";
 
 function Urls() {
-  const currentURL = window.location.href;
+  var currentURL
+  if(typeof window !== 'undefined'){
+    currentURL = window.location.href;
+  }
   const domain = currentURL.split("controlpanel/all-urls")[0];
-  const [error, setError] = useState(false);
-  const [message, setMessage] = useState("");
   const CopyContent = (urll) => {
     navigator.clipboard
       .writeText(domain + urll)
@@ -26,7 +26,6 @@ function Urls() {
         setItems(Array.from(response.data));
       })
       .catch(function (error) {
-        setMessage(error.response.data.ERROR);
         setError(true);
       });
   }, []);

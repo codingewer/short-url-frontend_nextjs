@@ -16,12 +16,6 @@ function AboutUs() {
   useEffect(() => {
     dispatch(GetSiteDataBySiteName());
   }, [dispatch]);
-  const data =
-    sitedata !== null
-      ? sitedata
-      : {
-          AboutUs: "Hakkımızda",
-        };
   useEffect(() => {
     window.scrollTo(0, 0); // Sayfanın en üstüne kaydır
     Aos.init({ duration: 2000 });
@@ -55,7 +49,7 @@ function AboutUs() {
           </div>
         </div>
         <div className="contactus-content">
-          <div dangerouslySetInnerHTML={{ __html: data.AboutUs }}></div>
+          <div dangerouslySetInnerHTML={{ __html: sitedata?.AboutUs }}></div>
         </div>
       </div>
       <Footer />
