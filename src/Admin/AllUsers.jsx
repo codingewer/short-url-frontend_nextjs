@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { GetAllUserAsync } from "../Api/User/UserSlice";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 function AllUsers() {
   const users = useSelector((state) => state.users.users);
@@ -34,7 +34,7 @@ function AllUsers() {
         users.length > 0 &&
         filterUsers.map((user) => (
           <div key={user.ID} className="cp-data-card">
-            <Link to={`/controlpanel/user/${user.ID}`}>{user.UserName}</Link>
+            <Link href={`/controlpanel?section=user&id=${user.ID}`}>{user.UserName}</Link>
             <span>{user.Mail}</span>
           </div>
         ))}

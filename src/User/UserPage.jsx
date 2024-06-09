@@ -11,13 +11,13 @@ import {
   DeleteUrlByAdminAsync,
   GetUrlByCreatedByAsync,
 } from "../Api/Url/UrlSlice";
-import { Link, useParams } from "react-router-dom";
 import {
   DeleteUserByAdminAsync,
   GetUserByIDAsync,
   UpdateUserBlockedAsync,
 } from "../Api/User/UserSlice";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 function UserPage() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function UserPage() {
     Blocked:false
   };
 
-  const { id } = useParams();
+  const router = useRouter();
 
   const CopyContent = (urll) => {
     navigator.clipboard
@@ -65,13 +65,13 @@ function UserPage() {
         "Kullanıcıyı kısıtlama/kısıtlamayı kaldırmak istediğinize emin misiniz?"
       )
     ) {
-      dispatch(UpdateUserBlockedAsync(id));
+      dispatch(UpdateUserBlockedAsync(router.query.id));
     }
   };
 
   useEffect(() => {
-    dispatch(GetUrlByCreatedByAsync(id));
-    dispatch(GetUserByIDAsync(id));
+    dispatch(GetUrlByCreatedByAsync(router.query.id));
+    dispatch(GetUserByIDAsync(router.query.id));
   }, [dispatch]);
   console.log(user0);
   const displayItems = items !== null ? items : [];
@@ -83,7 +83,7 @@ function UserPage() {
         </button>{" "}
         <button className="card-btns" onClick={ChangeUserBlocked}>
           {" "}
-          <img src={usersuccess &&  user?.Blocked === false ? blockicon : unblocicon} alt="kullanıcıyı sil" />
+          <Image src={usersuccess &&  user?.Blocked === false ? blockicon : unblocicon} alt="kullanıcıyı sil" />
         </button>
       </div>
       <div className="user-details-card">
@@ -123,7 +123,7 @@ function UserPage() {
       </div>
       <div className="short-url-container">
         <span className="contents-titles">Linkler</span>
-        {urlgetloading && <img src={loadingicon} className="loading-icon" />}
+        {urlgetloading && <Image src={loadingicon} className="loading-icon" />}
 
         {displayItems.length !== 0 && (
           <div className="last-shortened-urls">
@@ -169,14 +169,14 @@ function UserPage() {
                           type="button"
                           onClick={() => CopyContent(item.ShortenedUrl)}
                         >
-                          <img src={copyicon} alt="Kopyala" />
+                          <Image src={copyicon} alt="Kopyala" />
                         </button>
                         <button
                           type="button"
                           className="card-btns"
                           onClick={() => DeleteContent(item.ID)}
                         >
-                          <img src={trashicon} alt="Sil" />
+                          <Image src={trashicon} alt="Sil" />
                         </button>
                       </div>
                     </td>

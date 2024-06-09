@@ -1,19 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GetFaqByIdAsync, UpdateFaqByIdAsync } from "../Api/Faq/FaqSlice";
 import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import loadingico from "../assets/icons/loading.gif";
 import { GetUrlfaqByIdAsync, UpdateUrlfaqByIdAsync } from "../Api/Faq/UrlFaqSlice";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 function UpdateUrlFaq() {
   const dispatch = useDispatch();
-  const { id } = useParams();
-
-  const faq = useSelector((state) => state.faqs.data);
-  const success = useSelector((state) => state.faqs.success);
-  const postsuccess = useSelector((state) => state.faqs.postsuccess);
-  const loading = useSelector((state) => state.faqs.loading);
+  const faq = useSelector((state) => state.urlfaqs.data);
+  const success = useSelector((state) => state.urlfaqs.success);
+  const loading = useSelector((state) => state.urlfaqs.loading);
   const FaqFrom = useFormik({
     initialValues: {
       ID: "",
@@ -24,6 +22,7 @@ function UpdateUrlFaq() {
       await dispatch(UpdateUrlfaqByIdAsync(values));
     },
   });
+  const router = useRouter();
 
   useEffect(() => {
     if (success && faq !== null) {
@@ -31,11 +30,12 @@ function UpdateUrlFaq() {
         ID: faq.ID,
         Question: faq.Question,
         Answer: faq.Answer,
-      });
-    } else {
-      dispatch(GetUrlfaqByIdAsync(id));
+        });
+        } else {
+      dispatch(GetUrlfaqByIdAsync(router.query.id));
     }
   }, [dispatch, faq]);
+  console.log(faq);
   return (
     <div className="cp-data-container">
       <div className="faq-container">
@@ -59,7 +59,8 @@ function UpdateUrlFaq() {
             onChange={FaqFrom.handleChange}
           ></textarea>
           {loading && (
-            <img className="loading-icon" src={loadingico} alt="loading" />
+            
+            <Image className="loading-icon" src={loadingico} alt="loading" />
           )}
           <button disabled={loading}  type="submit" className="cp-form-btn">
             Güncelle

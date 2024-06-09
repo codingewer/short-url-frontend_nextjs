@@ -4,8 +4,13 @@ import editicon from "../assets/icons/edit-icon.png";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
-import { CreateNewUrlfaqAsync, DeleteUrlfaqByIdAsync, GetAllUrlfaqsAsync } from "../Api/Faq/UrlFaqSlice";
+import Link from "next/link";
+import {
+  CreateNewUrlfaqAsync,
+  DeleteUrlfaqByIdAsync,
+  GetAllUrlfaqsAsync,
+} from "../Api/Faq/UrlFaqSlice";
+import Image from "next/image";
 
 function UrlFaqs() {
   const dispatch = useDispatch();
@@ -62,10 +67,24 @@ function UrlFaqs() {
             <p>{faq.Answer}</p>
             <div className="cp-card-btns">
               <button type="button" onClick={() => DeleteFaq(faq.ID)}>
-                <img src={trashicon} alt="sil" />
+                <Image
+                  style={{
+                    height: 28,
+                    width: 28,
+                  }}
+                  src={trashicon}
+                  alt="sil"
+                />
               </button>
-              <Link to={"/controlpanel/faqs/update/" + faq.ID}>
-                <img src={editicon} alt="guncelle" />
+              <Link href={"/controlpanel?section=updateurlfaq&id=" + faq.ID}>
+                <Image
+                  style={{
+                    height: 28,
+                    width: 28,
+                  }}
+                  src={editicon}
+                  alt="guncelle"
+                />
               </Link>
             </div>
           </div>

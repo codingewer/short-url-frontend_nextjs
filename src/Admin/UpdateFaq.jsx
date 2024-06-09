@@ -24,7 +24,6 @@ function UpdateFaq() {
       await dispatch(UpdateFaqByIdAsync(values));
     },
   });
-console.log(router)
   useEffect(() => {
     if (success && faq !== null) {
       FaqFrom.setValues({

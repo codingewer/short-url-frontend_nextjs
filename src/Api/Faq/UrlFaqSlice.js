@@ -1,16 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const apiUrl = process.env.NEXT_PUBLIC_API_KEY;
-var token
+var token;
 if (typeof window !== "undefined") {
   token = localStorage.getItem("token");
 }
 export const GetAllUrlfaqsAsync = createAsyncThunk(
   "urlsurlfaqs/GetAllurlsurlfaqsAsync",
   async () => {
-    const response = await axios.get(
-      `${apiUrl}/urlfaq/getall`
-    );
+    const response = await axios.get(`${apiUrl}/urlfaq/getall`);
     return response.data;
   }
 );
@@ -19,68 +17,59 @@ export const GetAllUrlfaqsAsync = createAsyncThunk(
 export const GetUrlfaqByIdAsync = createAsyncThunk(
   "urlsurlfaqs/GeturlfaqByIdAsync",
   async (id) => {
-    const response = await axios.get(
-      `${apiUrl}/urlfaq/getbyid/${id}`
-    );
+    const response = await axios.get(`${apiUrl}/urlfaq/getbyid/${id}`);
     return response.data;
-  })
+  }
+);
 
 //Update urlfaq by id
 export const UpdateUrlfaqByIdAsync = createAsyncThunk(
   "urlsurlfaqs/UpdateurlfaqByIdAsync",
   async (data) => {
-    const response = await axios.put(
-      `${apiUrl}/urlfaq/update`,
-      data,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await axios.put(`${apiUrl}/urlfaq/update`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
-  })
+  }
+);
 
-  //Create new urlfaq
-  export const CreateNewUrlfaqAsync = createAsyncThunk(
-    "urlsurlfaqs/CreateNewurlfaqAsync",
-    async (data) => {
-      const response = await axios.post(
-        `${apiUrl}/urlfaq/new`,
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      return response.data;
-    })
+//Create new urlfaq
+export const CreateNewUrlfaqAsync = createAsyncThunk(
+  "urlsurlfaqs/CreateNewurlfaqAsync",
+  async (data) => {
+    const response = await axios.post(`${apiUrl}/urlfaq/new`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  }
+);
 
 // delete urlfaq by id
 export const DeleteUrlfaqByIdAsync = createAsyncThunk(
   "urlsurlfaqs/DeleteurlfaqByIdAsync",
   async (id) => {
-    const response = await axios.delete(
-      `${apiUrl}/urlfaq/delete/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await axios.delete(`${apiUrl}/urlfaq/delete/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
-  })
+  }
+);
 
 const Urlurlfaqslice = createSlice({
   name: "urlsurlfaqs",
   initialState: {
     loading: false,
-    items:[],
+    items: [],
     error: null,
     data: null,
     success: false,
-    postsuccess : false,
+    postsuccess: false,
     message: null,
   },
   reducers: {},
@@ -130,7 +119,9 @@ const Urlurlfaqslice = createSlice({
       .addCase(CreateNewUrlfaqAsync.fulfilled, (state, action) => {
         state.success = true;
         state.data = action.payload;
-        state.items !== null ? state.items.push(action.payload) : state.items.unshift(action.payload);
+        state.items !== null
+          ? state.items.push(action.payload)
+          : state.items.unshift(action.payload);
         state.loading = false;
       })
       .addCase(CreateNewUrlfaqAsync.pending, (state) => {
@@ -145,7 +136,9 @@ const Urlurlfaqslice = createSlice({
         state.success = true;
         state.loading = false;
         //remove from items
-        state.items = state.items.filter((item) => item.ID !== action.payload.ID);
+        state.items = state.items.filter(
+          (item) => item.ID !== action.payload.ID
+        );
       })
       .addCase(DeleteUrlfaqByIdAsync.pending, (state) => {
         state.loading = true;

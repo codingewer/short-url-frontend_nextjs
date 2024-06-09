@@ -66,10 +66,16 @@ function AllFaq() {
             <p>{faq.Answer}</p>
             <div className="cp-card-btns">
               <button type="button" onClick={() => DeleteFaq(faq.ID)}>
-                <Image src={trashicon} alt="sil" />
+                <Image style={{
+                  height:28,
+                  width:28
+                }} src={trashicon} alt="sil" />
               </button>
               <Link href={"controlpanel?section=updatefaq&id=" + faq.ID}>
-                <Image src={editicon} alt="guncelle" />
+                <Image style={{
+                  height:28,
+                  width:28
+                }} src={editicon} alt="guncelle" />
               </Link>
             </div>
           </div>

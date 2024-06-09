@@ -55,10 +55,14 @@ function ControlPanel() {
         return <UpdateFaq />;
       case "allurlsfaqs":
         return <UrlFaqs />;
+      case "updateurlfaq":
+        return <UpdateUrlFaq />;
       case "users":
         return <AllUsers />;
       case "updatesitesettings":
         return <UpdateSiteSettings />;
+      case "user":
+        return <UserPage />;
       case "/":
       default:
         return <BalanceRequests paid={true} />;
