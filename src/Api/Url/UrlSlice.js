@@ -166,9 +166,6 @@ const UrlSlice = createSlice({
       .addCase(UpdateUrlByIdAsync.fulfilled, (state, action) => {
         state.success = true;
         state.loading = false;
-        state.items = state.items.map((item) =>
-          item.ID === action.payload.ID ? action.payload : item
-        );
       })
       .addCase(UpdateUrlByIdAsync.pending, (state) => {
         state.success = false;

@@ -6,6 +6,7 @@ import UpdateUser from "./UpdateUser";
 import HelpReq from "./HelpReq";
 import BalanceRequest from "./BalanceRequest";
 import ShortUrl from "../Url/ShortUrl";
+import UpdateUrl from "../Url/UpdateUrl";
 
 import { GetUserByIDAsync } from "../Api/User/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -61,6 +62,8 @@ function Profile() {
         return <BalanceRequest />;
       case "shorturl":
         return <ShortUrl />;
+        case "updateurl":
+          return <UpdateUrl/>
       case "statistics":
       default:
         return <DataChart />;

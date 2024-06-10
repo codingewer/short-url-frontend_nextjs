@@ -144,7 +144,7 @@ console.log(items)
                       </button>
                       <Link
                         className="card-btns"
-                        href={"/dashboard/updateurl/" + item.ID}
+                        href={"/dashboard?section=updateurl&id=" + item.ID}
                         >
                         
                         <Image src={editicon} alt="Kopyala" />
