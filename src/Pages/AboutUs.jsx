@@ -41,7 +41,6 @@ function AboutUs() {
               </div>
             </div>
             <Image
-              className="undraw-link-shortener-mvf6-1-icon"
               loading="lazy"
               alt=""
               src={bgbanner}
